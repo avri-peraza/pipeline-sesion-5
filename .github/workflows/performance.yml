@@ -23,7 +23,7 @@ jobs:
             -v ${{ github.workspace }}/test-plans:/test-plans \
             -v ${{ github.workspace }}/results:/results \
             -v ${{ github.workspace }}/config:/config \
-            justb4/jmeter:5.6.3 \
+            liukunup/jmeter:5.6.3 \
             /bin/sh -c "\
               jmeter -n \
                 -t /test-plans/api-performance.jmx \
