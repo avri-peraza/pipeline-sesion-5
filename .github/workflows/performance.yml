@@ -17,9 +17,6 @@ jobs:
       - name: Clean results folder
         run: rm -rf ./results/*
 
-      - name: Make script executable
-        run: chmod +x ./config/check-thresholds.sh
-
       - name: Run JMeter tests in Docker
         run: |
           docker run --rm \
@@ -32,22 +29,18 @@ jobs:
             -l /results/results.jtl \
             -e -o /results/html-report
 
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y bc
+
       - name: Check performance thresholds
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}/results:/results \
-            -v ${{ github.workspace }}/config:/config \
-            liukunup/jmeter:5.6.3 \
-            /bin/sh -c "/config/check-thresholds.sh /results/results.jtl"
+          chmod +x ./config/check-thresholds.sh
+          ./config/check-thresholds.sh results/results.jtl
 
-      - name: Upload JMeter JTL results
+      - name: Upload results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: performance-results
-          path: results/results.jtl
-
-      - name: Upload HTML report
-        uses: actions/upload-artifact@v4
-        with:
-          name: performance-html-report
-          path: results/html-report/
+          name: performance-report
+          path: results/
+          retention-days: 30
