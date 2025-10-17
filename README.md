@@ -12,19 +12,29 @@ El pipeline automatiza todo el flujo de pruebas de rendimiento mediante GitHub A
 
 Para realizar las pruebas se utilizó la API pública de httpbin.org, que proporciona endpoints gratuitos para pruebas de rendimmiento y validación de peticiones HTTP.
 Especificamente en este caso se probó:
+
 GET /get
+
 POST /post
+
 GET /delay/1
+
 GET /status/200
+
 GET /bytes/1024
+
 PUT /put
+
 GET /headers
 
 Cada endpoint fue incluido en el plan de pruebas api-performance.jmx, simulando 50 usuarios simultáneos con un ramp-up de 2 minutos.
 
 Para validar la cálidad del rendimientos se aplicaron los siguientes criterios: 
+
 - P95 < 500ms 
+
 - tasa de error < 1%
+
 Estos valores se evalúan mediante un script (thresholds.sh) que analiza el archivo de resultados .jtl generado por JMeter. 
 
 Cuando los resulados no cumplen con los umbrales definidos, el script marca la ejecución como fallida, probocando que el pipeline de CI/CD se detenga.
@@ -53,4 +63,5 @@ l. finalizar la ejecución, se espera obtener:
 Ejemplo de pipeline pasando y fallando.
 
 Log de ejecución con “✅” y “❌”.
+
 
