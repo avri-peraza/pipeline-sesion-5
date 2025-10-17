@@ -60,8 +60,5 @@ l. finalizar la ejecución, se espera obtener:
 
 4. Fallo controlado del pipeline (exit code 1) en caso de incumplimiento de umbrales, impidiendo el despliegue o aprobación de cambios.
 
-Ejemplo de pipeline pasando y fallando.
-
-Log de ejecución con “✅” y “❌”.
 
 
