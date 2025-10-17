@@ -1,4 +1,5 @@
 Descripción
+
 El presente repositorio contiene la implementacion de pruebas de rendimiento con JMeter integradas en un proceso de CI/CD automatizado. El objetivo del trabajo es ejecutar pruebas de cargas sobre una API, evaluar automáticamente los resultados con umbrales predefinidos y generar reportes HTML que se publiquen como artefactos del pipeline. 
 
 El pipeline automatiza todo el flujo de pruebas de rendimiento mediante GitHub Actions 
@@ -30,6 +31,7 @@ Cuando los resulados no cumplen con los umbrales definidos, el script marca la e
 Esto actua como una puerta de control automatizada, no aceptando cambios dentro de coódigo que provocan que el rendimiento no este dentro de los umbrales.
 
 Cómo ejecutar
+
 El pipeline se ejecuta automáticamente al realizar un push o pull request.
 Los resultados pueden ser visualizados desde la pestaña “Actions” en el repositorio, y descargar el artefacto “jmeter-report” que contiene el dashboard HTML.
 
@@ -51,3 +53,4 @@ l. finalizar la ejecución, se espera obtener:
 Ejemplo de pipeline pasando y fallando.
 
 Log de ejecución con “✅” y “❌”.
+
