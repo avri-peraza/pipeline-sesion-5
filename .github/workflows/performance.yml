@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Ensure results folder exists
+  	run: mkdir -p results
+
       - name: Clean results folder
         run: rm -rf ./results/*
 
